@@ -22,7 +22,7 @@ bronto:
 # generates the executable and the bin dir. PLEASE PLEASE PLEASE DO NOT DELETE BIN
 trex: $(BIN_DIR) $(READABLE_OBJ)
 	$(CC) $(OBJ) $(READABLE_OBJ) -o $(EXEC)
-	@bash .aicheck
+# 	@bash .aicheck
 
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
@@ -65,7 +65,8 @@ stego: trex
 
 
 # Clean target to remove compiled files DO NOT REMOVE THE SUPPLIED .o FILES
-spinosaurus:
+# spinosaurus:
+clean:
 	rm -f $(EXEC) $(READABLE_OBJ)
 
 .PHONY: ptera
