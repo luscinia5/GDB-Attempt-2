@@ -14,7 +14,8 @@ struct listnode* reorder_list(struct listnode* node) {
 static struct listnode* find_news(struct listnode** node) {
     struct listnode* follow = NULL;
     struct listnode* itr = *node;
-    while (itr->age == OLD) {
+    // while (itr->age == OLD) {
+    while (itr->age == OLD && itr->next != NULL) {
         follow = itr;
         itr = itr->next;
     }
@@ -39,15 +40,15 @@ static struct listnode* reverse(struct listnode* node) {
 }
 
 static struct listnode* merge(struct listnode* node1, struct listnode* node2) {
-    struct listnode head = {0};
+    struct listnode head = {0}; // this is a fucking logic error (I think)
     struct listnode* itr = &head;
-    while (&head) {
+    while (node1 && node2) {
         itr->next = node1;
         node1 = node1->next;
         itr = itr->next;
         itr->next = node2;
         itr = itr->next;
-        node2 = node2->next;
+        node2 = node2->next; 
     }
     if (node1) {
         itr->next = node1;
